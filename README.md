@@ -2,7 +2,7 @@
 Samples of Code I have written, python, C and matlab.
 
 #Hydro 1D.py
-Given the problem
+Given the problem of 
 
 #Matthews cipher
 The matthews cipher is a chaotic function, used to encrypting information. 
