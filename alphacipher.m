@@ -4,7 +4,7 @@ x=size(n);
 r=1;
 for i=1:n
     x(1)=a;
-    x(i+1)= r*x(i)*(1-x(i))^(3*r)-tan(r/100);
+    x(i+1)= r*x(i)*(1-x(i))^(3*r)-tan(r/100); %Non-linear chaotic cipher
 end
 
 N=100;
