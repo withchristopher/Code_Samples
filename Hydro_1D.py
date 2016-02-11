@@ -54,7 +54,7 @@ class Fluid:
             self.rhoE[0]=self.rhoE[1]
             self.rhoE[-1]=self.rhoE[-2]
             return    
-        assert(1==0)  #why did we do this?
+        assert(1==0)
 
 	#The reason for the 'assert' condition, is to test whether the condition is false, and to trigger an error if so. The values returned 		#should resmeble that of a matrix consisiting of 0's, if not then the function will produce an error message.
 
@@ -87,23 +87,22 @@ class Fluid:
                 dp[ii]-=fp[ii]
                 drhoE[ii-1]+=fE[ii]
                 drhoE[ii]-=fE[ii]
-        #Why is there a factor of 1/2 in the pressure gradient? Tutorial problem 2
-        gradP=0.5*(self.P[2:]-self.P[0:-2]) #P[2:0] - ?
+        gradP=0.5*(self.P[2:]-self.P[0:-2])
         dp[1:-1]-=gradP
         self.gradrho=drho
         self.gradp=dp
         self.gradrhoE=drhoE
     def get_timestep(self,dt=0.1):
          c_s=numpy.sqrt(self.gamma*self.P/self.rho)
-+        #we want maximum magnitude of v+/- c_s, so we can simply take
-+        #the maximum of |v|+|c_s|
-+        vmax=numpy.max(numpy.abs(c_s)+numpy.abs(self.v))
-+        #we now have the maximum velocity.  So the marginally stable timestep 
-+        #is dx/vmax.  The tutorial instructions request that we return the input argument
-+        #times the global marginally stable step
-+        ts= self.dx/vmax*dt
-+        #print 'dt is ' + repr(ts)
-+        return ts
+        #we want maximum magnitude of v+/- c_s, so we can simply take
+        #the maximum of |v|+|c_s|
+        vmax=numpy.max(numpy.abs(c_s)+numpy.abs(self.v))
+        #we now have the maximum velocity.  So the marginally stable timestep 
+        #is dx/vmax.  The tutorial instructions request that we return the input argument
+        #times the global marginally stable step
+        ts= self.dx/vmax*dt
+        #print 'dt is ' + repr(ts)
+        return ts
         return 0.5*dt  #*self.dx
     def take_step(self):
         #before we can do anything else, get the boundary conditions
