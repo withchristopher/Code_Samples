@@ -7,6 +7,7 @@ The Lyapunov dimension is used to test different keys for an encrpytion alg (Mat
 
 #Timing Gate - Timing_gate.py
 Electronics project with a Raspberry pi computer in construction of photogate for science experiment. 2 x Input photo sensors via I/O pins, output given on 2x16 character LCD screen. Device adopted by Bloodhound SSC project as official timing system for Education program.
-
+#Alpha cipher
+An encryption cipher written for matlab (or SciLab), as chaotic cipher for encrpytion.
 #Elo rating
 Chess player rating script. Used for current chess players to input their scores and obtain a new 'Elo Rating', the official chess players rating.
