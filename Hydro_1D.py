@@ -94,7 +94,16 @@ class Fluid:
         self.gradp=dp
         self.gradrhoE=drhoE
     def get_timestep(self,dt=0.1):
-        #tutorial problem 3 - what should this timestep actually be from CFL?
+         c_s=numpy.sqrt(self.gamma*self.P/self.rho)
++        #we want maximum magnitude of v+/- c_s, so we can simply take
++        #the maximum of |v|+|c_s|
++        vmax=numpy.max(numpy.abs(c_s)+numpy.abs(self.v))
++        #we now have the maximum velocity.  So the marginally stable timestep 
++        #is dx/vmax.  The tutorial instructions request that we return the input argument
++        #times the global marginally stable step
++        ts= self.dx/vmax*dt
++        #print 'dt is ' + repr(ts)
++        return ts
         return 0.5*dt  #*self.dx
     def take_step(self):
         #before we can do anything else, get the boundary conditions
